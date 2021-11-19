@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import './NavBar.scss';
 
 const NavBar = () => {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    window.onscroll = () => {
+        setIsScrolled(window.pageYOffset === 0 ? false : true);
+        return () => (window.onscroll = null);
+    };
+
     return (
-        <div className="navBar">
+        <div className={ isScrolled ? "navBar scrolled" : "navBar"}>
             <div className="container">
                 <div className="left">
                     <img 
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" 
+                        src="https://cdn.popsww.com/popsapp/assets/images/icons/logo-pops.png" 
                         alt="" 
                     />
                     <span>Homepage</span>
