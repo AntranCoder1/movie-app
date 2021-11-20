@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 
 const authRoute = require('./routes/Auth.route');
+const userRoute = require('./routes/User.route');
 
 const connectDB = async () => {
     try {
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(morgan("common"));
 
 app.use('/api/auth', authRoute);
+app.use('/api/users', userRoute);
 
 const port = 5000
 app.listen(port, () => {
