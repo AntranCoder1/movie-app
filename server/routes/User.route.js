@@ -33,4 +33,20 @@ router.put("/:id", verify, async (req, res) => {
     }
 });
 
+// @router api/users/:id
+// @desc DELETE user
+// @access Private
+router.delete('/:id', verify, async (req, res) => {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+        try {
+            await User.findByIdAndDelete(req.params.id);
+            res.status(200).json('User has been deleted...');
+        } catch (error) {
+            res.status(500).json({ success: false, message: 'Internal server error' });
+        }
+    } else {
+        res.status(403).json({ success: false, message: 'You can delete only your account!' });
+    }
+});
+
 module.exports = router;
