@@ -59,4 +59,32 @@ router.delete('/:id', verify, async (req, res) => {
     }
 });
 
+// @router api/movie/find/:id
+// @desc GET movie
+// @access Private
+router.get('/find/:id', verify, async (req, res) => {
+    try {
+        const movie = await Movie.findById(req.params.id);
+        res.status(200).json(movie);
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
+
+// @router api/movie/
+// @desc GET all movie
+// @access Private
+router.get('/', verify, async (req, res) => {
+    if (req.user.isAdmin) {
+        try {
+            const movies = await Movie.find();
+            res.status.apply(200).json(movies.reverse());
+        } catch (error) {
+            res.status(500).json({ success: false, message: 'Internal server error' });
+        }
+    } else {
+        res.status(403).json({ success: false, message: 'You are not allowed!' });
+    }
+})
+
 module.exports = router;
