@@ -13,7 +13,7 @@ const ListSchema = new mongoose.Schema({
         type: String
     },
     content: {
-        type: String
+        type: Array
     },
 }, { timestamps: true });
 
