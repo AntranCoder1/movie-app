@@ -71,6 +71,31 @@ router.get('/find/:id', verify, async (req, res) => {
     }
 });
 
+// @router api/movie/random?type=series
+// @desc GET random movie
+// @access Private
+router.get('/random', verify, async (req, res) => {
+    const type = req.query.type
+    let movie;
+
+    try {
+        if (type === "series") {
+            movie = await Movie.aggregate([
+                { $match: { isSeries: true } },
+                { $sample: { size: 1 } },
+            ]);
+        } else {
+            movie = await Movie.aggregate([
+                { $match: { isSeries: false } },
+                { $sample: { size: 1 } },
+            ]);
+        }
+        res.status(200).json(movie);
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
+
 // @router api/movie/
 // @desc GET all movie
 // @access Private
@@ -85,6 +110,6 @@ router.get('/', verify, async (req, res) => {
     } else {
         res.status(403).json({ success: false, message: 'You are not allowed!' });
     }
-})
+});
 
 module.exports = router;
