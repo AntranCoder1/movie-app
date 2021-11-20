@@ -81,4 +81,31 @@ router.get("/", verify, async (req, res) => {
     }
 });
 
+// @router api/user/stats
+// @desc GET stats user
+// @access Private
+router.get('/stats', async (req, res) => {
+    const today = new Date();
+    const lastYear = today.setFullYear(today.setFullYear() - 1);
+
+    try {
+        const data = await User.aggregate([
+            {
+                $project: {
+                    month: { $month: "$createdAt" },
+                },
+            },
+            {
+                $group: {
+                    _id: "$month",
+                    total: { $sum: 1 },
+                },
+            },
+        ]);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+}); 
+
 module.exports = router;
