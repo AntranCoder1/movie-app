@@ -43,4 +43,20 @@ router.put('/:id', verify, async (req, res) => {
     }
 });
 
+// @router api/movie/:id
+// @desc DELETE movie
+// @access Private
+router.delete('/:id', verify, async (req, res) => {
+    if (req.user.isAdmin) {
+        try {
+            await Movie.findByIdAndDelete(req.params.id);
+            res.status(200).json('The movie has been delete...');
+        } catch (error) {
+            res.status(500).json({ success: false, message: 'Internal server error' });
+        }
+    } else {
+        res.status(403).json({ success: false, message: 'You are not allowed!' });
+    }
+});
+
 module.exports = router;
