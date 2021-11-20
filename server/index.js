@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 const authRoute = require('./routes/Auth.route');
 
@@ -25,7 +26,9 @@ const connectDB = async () => {
 
 connectDB();
 
+// middleware
 app.use(express.json());
+app.use(morgan("common"));
 
 app.use('/api/auth', authRoute);
 
