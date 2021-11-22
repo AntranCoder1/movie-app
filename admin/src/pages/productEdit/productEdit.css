@@ -1,0 +1,133 @@
+.productEdit {
+    flex: 4;
+    padding: 20px;
+}
+
+.productEditContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.productEditAddButton {
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: teal;
+    font-weight: 600;
+    color: #fff;
+    font-size: 16px;
+}
+
+.productEditTop {
+    display: flex;
+}
+
+.productEditTopLeft,
+.productEditTopRight {
+    flex: 1;
+}
+
+.productEditTopRight {
+    padding: 20px;
+    margin: 20px;
+    margin-right: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75); 
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+}
+
+.productEditImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.productEditInfoTop {
+    display: flex;
+    align-items: center;
+}
+
+.productEditName {
+    font-weight: 600;
+}
+
+.productEditInfoBottom {
+    margin-top: 10px;
+}
+
+.productEditInfoItem {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.productEditInfoValue {
+    font-weight: 300;
+}
+
+.productEditBottom {
+    padding: 20px;
+    margin: 20px;
+    margin-right: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75); 
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+}
+
+.productEditForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.productEditFormLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+.productEditFormLeft > label {
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.productEditFormLeft > input {
+    margin-bottom: 10px;
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.productEditFormLeft > select {
+
+}
+
+.productEditUploadImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px; 
+}
+
+.productEditFormRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.productEditUpload {
+    display: flex;
+    align-items: center;
+}
+
+.productEditButton {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: darkblue;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
