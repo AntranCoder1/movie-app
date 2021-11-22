@@ -73,10 +73,9 @@ router.get('/find/:id', verify, async (req, res) => {
 // @router api/movie/random?type=series
 // @desc GET random movie
 // @access Private
-router.get('/random', verify, async (req, res) => {
-    const type = req.query.type
+router.get("/random", verify, async (req, res) => {
+    const type = req.query.type;
     let movie;
-
     try {
         if (type === "series") {
             movie = await Movie.aggregate([
@@ -90,8 +89,8 @@ router.get('/random', verify, async (req, res) => {
             ]);
         }
         res.status(200).json(movie);
-    } catch (error) {
-        res.status(500).json({ success: false, message: 'Internal server error' });
+    } catch (err) {
+      res.status(500).json(err);
     }
 });
 
