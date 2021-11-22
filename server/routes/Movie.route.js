@@ -6,18 +6,17 @@ const verify = require('../verifyToken');
 // @router api/movie/
 // @desc POST movie
 // @access Private
-router.post('/', verify, async (req, res) => {
+router.post("/", verify, async (req, res) => {
     if (req.user.isAdmin) {
         const newMovie = new Movie(req.body);
-
         try {
             const savedMovie = await newMovie.save();
-            res.status(200).json(savedMovie);
-        } catch (error) {
-            res.status(500).json({ success: false, message: 'Internal server error' });
+            res.status(201).json(savedMovie);
+        } catch (err) {
+            res.status(500).json(err);
         }
     } else {
-        res.status(403).json({ success: false, message: 'You are not allowed!' });
+        res.status(403).json("You are not allowed!");
     }
 });
 
