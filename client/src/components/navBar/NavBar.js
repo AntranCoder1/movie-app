@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
+import { Link } from 'react-router-dom';
 import './NavBar.scss';
 
 const NavBar = () => {
@@ -19,9 +20,15 @@ const NavBar = () => {
                         src="https://cdn.popsww.com/popsapp/assets/images/icons/logo-pops.png" 
                         alt="" 
                     />
-                    <span>Homepage</span>
-                    <span>Series</span>
-                    <span>Movies</span>
+                    <Link to='/'>
+                        <span>Homepage</span>
+                    </Link>
+                    <Link to='/series'>
+                        <span>Series</span>
+                    </Link>
+                    <Link to='/movies'>
+                        <span>Movies</span>
+                    </Link>
                     <span>New and Popular</span>
                     <span>My List</span>
                 </div>
