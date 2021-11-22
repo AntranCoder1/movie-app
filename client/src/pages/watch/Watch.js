@@ -1,8 +1,13 @@
 import React from 'react';
 import { ArrowBackOutlined } from "@material-ui/icons";
 import './Watch.scss';
+import { useLocation } from 'react-router';
 
 const Watch = () => {
+
+    const location = useLocation();
+    const movie = location.movies;
+
     return (
         <div className="watch">
             <div className="back">
@@ -14,7 +19,7 @@ const Watch = () => {
                 autoPlay
                 progress
                 controls
-                src="https://cdn.videvo.net/videvo_files/video/free/2021-04/large_watermarked/210329_06B_Bali_1080p_013_preview.mp4"
+                src={movie.video}
             />
         </div>
     )

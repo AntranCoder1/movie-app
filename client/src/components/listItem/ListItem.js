@@ -7,6 +7,7 @@ import {
 } from "@material-ui/icons";
 import axios from 'axios';
 import './ListItem.scss';
+import { Link } from 'react-router-dom';
 
 const ListItem = ({ index, item }) => {
 
@@ -31,36 +32,38 @@ const ListItem = ({ index, item }) => {
     }, [item])
 
     return (
-        <div className="listItem"
-            style={{left: isHovered && index * 225 - 50 + index * 2.5}}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            <img 
-                src={movies.img}
-                alt=""
-            />
-            { isHovered && (
-                <>
-                    <video src={movies.trailer} autoPlay={true} loop />
-                    <div className="itemInfo">
-                        <div className="icons">
-                            <PlayArrow className="icon" />
-                            <Add className="icon" />
-                            <ThumbUpAltOutlined className="icon" />
-                            <ThumbDownOutlined className="icon" />
+        <Link to={{ pathname: '/watch', movies: movies }}>
+            <div className="listItem"
+                style={{left: isHovered && index * 225 - 50 + index * 2.5}}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                <img 
+                    src={movies.img}
+                    alt=""
+                />
+                { isHovered && (
+                    <>
+                        <video src={movies.trailer} autoPlay={true} loop />
+                        <div className="itemInfo">
+                            <div className="icons">
+                                <PlayArrow className="icon" />
+                                <Add className="icon" />
+                                <ThumbUpAltOutlined className="icon" />
+                                <ThumbDownOutlined className="icon" />
+                            </div>
+                            <div className="itemInfoTop">
+                                <span>{movies.duration}</span>
+                                <span className="limit">+{item.limit}</span>
+                                <span>{movies.year}</span>
+                            </div>
+                            <div className="desc">{movies.desc}</div>
+                            <div className="genre">{movies.genre}</div>
                         </div>
-                        <div className="itemInfoTop">
-                            <span>{movies.duration}</span>
-                            <span className="limit">+{item.limit}</span>
-                            <span>{movies.year}</span>
-                        </div>
-                        <div className="desc">{movies.desc}</div>
-                        <div className="genre">{movies.genre}</div>
-                    </div>
-                </>
-            ) }
-        </div>
+                    </>
+                ) }
+            </div>
+        </Link>
     )
 }
 
