@@ -14,6 +14,7 @@ import userCreate from './pages/userCreate/userCreate';
 import Product from './pages/product/Product';
 import productEdit from './pages/productEdit/productEdit';
 import newProduct from './pages/newProduct/newProduct';
+import Login from './pages/login/Login';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <SideBar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
           <Route exact path="/users" component={UserList} />
           <Route exact path="/users/:userId" component={userEdit} />
           <Route exact path="/create" component={userCreate} />
