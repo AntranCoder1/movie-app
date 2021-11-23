@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { login } from '../../context/authContext/ApiCall';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import './Login.css';
 
@@ -6,6 +7,14 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const { isFetching, dispatch } = useContext(AuthContext);
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        login({ email, password }, dispatch);
+    }
 
     return (
         <div className="login">
@@ -24,6 +33,8 @@ const Login = () => {
                 />
                 <button
                     className="loginButton"
+                    onClick={handleLogin}
+                    disabled={isFetching}
                 >
                     Login
                 </button>

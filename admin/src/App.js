@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './app.css';
 import SideBar from './components/sideBar/SideBar';
 import Topbar from './components/topbar/Topbar';
@@ -6,7 +6,8 @@ import Home from './pages/Home/Home';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import UserList from './pages/userList/UserList';
 import userEdit from './pages/userEdit/userEdit';
@@ -15,24 +16,34 @@ import Product from './pages/product/Product';
 import productEdit from './pages/productEdit/productEdit';
 import newProduct from './pages/newProduct/newProduct';
 import Login from './pages/login/Login';
+import { AuthContext } from './context/authContext/AuthContext';
 
 function App() {
+
+  const { user } = useContext(AuthContext);
+
   return (
     <Router>
-      <Topbar />
-      <div className="container">
-        <SideBar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route exact path="/users" component={UserList} />
-          <Route exact path="/users/:userId" component={userEdit} />
-          <Route exact path="/create" component={userCreate} />
-          <Route exact path="/movies" component={Product} />
-          <Route exact path="/products/:productId" component={productEdit} />
-          <Route exact path="/newproduct" component={newProduct} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path='/login'>
+          { user ? <Redirect to='/' /> : <Login /> }
+        </Route>
+        { user ? (
+          <>
+            <Topbar />
+            <div className="container">
+              <SideBar />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/users" component={UserList} />
+                <Route exact path="/users/:userId" component={userEdit} />
+                <Route exact path="/create" component={userCreate} />
+                <Route exact path="/movies" component={Product} />
+                <Route exact path="/products/:productId" component={productEdit} />
+                <Route exact path="/newproduct" component={newProduct} />
+            </div>
+          </>
+        ) : <Login /> }
+      </Switch>
     </Router>
   );
 }
