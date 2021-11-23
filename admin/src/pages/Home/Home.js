@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Chart from '../chart/Chart';
 import FeaturedInfo from '../featuredInfo/FeaturedInfo';
-import { data } from '../../data';
-import './Home.css';
 import WidgetSm from '../widgetSm/WidgetSm';
 import Widgetlg from '../Widgetlg/Widgetlg';
 import axios from 'axios';
+import './Home.css';
 
 const Home = () => {
 
@@ -31,7 +30,7 @@ const Home = () => {
             try {
                 const res = await axios.get('/users/stats', {
                     headers: {
-                    token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOThiODdkMTM0MDQzMjU4ODMzYTAzYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzYzODYwMywiZXhwIjoxNjM4MDcwNjAzfQ.ghUzt1r2Lg41GaOMjUwFKYqnfukBdZVTOH4K5pcEbKI"
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOThiODdkMTM0MDQzMjU4ODMzYTAzYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzYzODYwMywiZXhwIjoxNjM4MDcwNjAzfQ.ghUzt1r2Lg41GaOMjUwFKYqnfukBdZVTOH4K5pcEbKI"
                     }
                 })
 

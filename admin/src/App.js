@@ -15,11 +15,7 @@ import Product from './pages/product/Product';
 import productEdit from './pages/productEdit/productEdit';
 import newProduct from './pages/newProduct/newProduct';
 
-
 function App() {
-
-  
-
   return (
     <Router>
       <Topbar />
@@ -30,7 +26,7 @@ function App() {
           <Route exact path="/users" component={UserList} />
           <Route exact path="/users/:userId" component={userEdit} />
           <Route exact path="/create" component={userCreate} />
-          <Route exact path="/products" component={Product} />
+          <Route exact path="/movies" component={Product} />
           <Route exact path="/products/:productId" component={productEdit} />
           <Route exact path="/newproduct" component={newProduct} />
         </Switch>

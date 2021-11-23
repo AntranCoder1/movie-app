@@ -5,7 +5,7 @@ import {
     Timeline, 
     TrendingUp,
     PermIdentity,
-    Storefront,
+    PlayCircleOutline,
     AttachMoney,
     BarChart,
     MailOutline,
@@ -49,10 +49,10 @@ const SideBar = () => {
                                 Users
                             </li>
                         </Link>
-                        <Link to="/products">
+                        <Link to="/movies">
                             <li className="sidebarListItem">
-                                <Storefront className="sidebarIcon" />
-                                Products
+                                <PlayCircleOutline className="sidebarIcon" />
+                                Movies
                             </li>
                         </Link>
                         <li className="sidebarListItem">
