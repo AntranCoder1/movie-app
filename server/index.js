@@ -35,7 +35,7 @@ app.use(morgan("common"));
 
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
-app.use('/api/movie', movieRoute);
+app.use('/api/movies', movieRoute);
 app.use('/api/lists', listRoute);
 
 const port = 5000

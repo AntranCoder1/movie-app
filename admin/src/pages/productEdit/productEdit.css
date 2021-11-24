@@ -65,6 +65,10 @@
     justify-content: space-between;
 }
 
+.productEditInfoKey {
+    margin-right: 20px;
+}
+
 .productEditInfoValue {
     font-weight: 300;
 }

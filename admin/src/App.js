@@ -13,7 +13,7 @@ import UserList from './pages/userList/UserList';
 import userEdit from './pages/userEdit/userEdit';
 import userCreate from './pages/userCreate/userCreate';
 import Product from './pages/product/Product';
-import productEdit from './pages/productEdit/productEdit';
+import ProductEdit from './pages/productEdit/ProductEdit';
 import newProduct from './pages/newProduct/newProduct';
 import Login from './pages/login/Login';
 import { AuthContext } from './context/authContext/AuthContext';
@@ -38,7 +38,7 @@ function App() {
                 <Route exact path="/users/:userId" component={userEdit} />
                 <Route exact path="/create" component={userCreate} />
                 <Route exact path="/movies" component={Product} />
-                <Route exact path="/products/:productId" component={productEdit} />
+                <Route exact path="/products/:productId" component={ProductEdit} />
                 <Route exact path="/newproduct" component={newProduct} />
             </div>
           </>

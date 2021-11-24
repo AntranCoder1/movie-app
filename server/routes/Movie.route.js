@@ -97,16 +97,16 @@ router.get("/random", verify, async (req, res) => {
 // @router api/movie/
 // @desc GET all movie
 // @access Private
-router.get('/', verify, async (req, res) => {
+router.get("/", verify, async (req, res) => {
     if (req.user.isAdmin) {
         try {
             const movies = await Movie.find();
-            res.status.apply(200).json(movies.reverse());
-        } catch (error) {
-            res.status(500).json({ success: false, message: 'Internal server error' });
+            res.status(200).json(movies.reverse());
+        } catch (err) {
+            res.status(500).json(err);
         }
     } else {
-        res.status(403).json({ success: false, message: 'You are not allowed!' });
+        res.status(403).json("You are not allowed!");
     }
 });
 
