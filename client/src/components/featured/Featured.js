@@ -45,6 +45,7 @@ const Featured = ({ type }) => {
                         <option value="animation">Animation</option>
                         <option value="drama">Drama</option>
                         <option value="documentary">Documentary</option>
+                        <option value="catoon">Catoon</option>
                     </select>
                 </div>
             )}
