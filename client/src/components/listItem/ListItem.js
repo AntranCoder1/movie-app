@@ -12,38 +12,37 @@ import { Link } from 'react-router-dom';
 const ListItem = ({ index, item }) => {
 
     const [isHovered, setIsHovered] = useState(false);
-    const [movies, setMovies] = useState({});
+    const [movie, setMovie] = useState({});
 
     useEffect(() => {
         const getMovie = async () => {
             try {
-                const res = await axios.get('/movies/find/' + item, {
+                const res = await axios.get("/movies/find/" + item, {
                     headers: {
-                        token: "Bearer" + JSON.parse(localStorage.getItem("user")).accessToken,
+                        token:
+                        "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
                     },
                 });
-                setMovies(res.data);
-            } catch (error) {
-                console.log(error);
+                setMovie(res.data);
+            } catch (err) {
+                console.log(err);
             }
-        }
+        };
         getMovie();
-    }, [item])
+    }, [item]);
 
     return (
-        <Link to={{ pathname: '/watch', movies: movies }}>
-            <div className="listItem"
-                style={{left: isHovered && index * 225 - 50 + index * 2.5}}
+        <Link to={{ pathname: "/watch", movie: movie }}>
+            <div
+                className="listItem"
+                style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <img 
-                    src={movies.img}
-                    alt=""
-                />
-                { isHovered && (
+                <img src={movie?.imgSm} alt="" />
+                {isHovered && (
                     <>
-                        <video src={movies.trailer} autoPlay={true} loop />
+                        <video src={movie.trailer} autoPlay={true} loop />
                         <div className="itemInfo">
                             <div className="icons">
                                 <PlayArrow className="icon" />
@@ -52,15 +51,15 @@ const ListItem = ({ index, item }) => {
                                 <ThumbDownOutlined className="icon" />
                             </div>
                             <div className="itemInfoTop">
-                                <span>{movies.duration}</span>
-                                <span className="limit">+{item.limit}</span>
-                                <span>{movies.year}</span>
+                                <span>{movie.duration}</span>
+                                <span className="limit">+{movie.limit}</span>
+                                <span>{movie.year}</span>
                             </div>
-                            <div className="desc">{movies.desc}</div>
-                            <div className="genre">{movies.genre}</div>
+                            <div className="desc">{movie.desc}</div>
+                            <div className="genre">{movie.genre}</div>
                         </div>
                     </>
-                ) }
+                )}
             </div>
         </Link>
     )

@@ -12,7 +12,7 @@ const Featured = ({ type, setGenre }) => {
             try {
                 const res = await axios.get(`/movies/random?type=${type}`, {
                     headers: {
-                        token: "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+                        token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken,
                     },
                 });
                 setContent(res.data[0]);
@@ -30,7 +30,11 @@ const Featured = ({ type, setGenre }) => {
             {type && (
                 <div className="category">
                     <span>{type === "movies" ? "Movies" : "Series"}</span>
-                    <select name="genre" id="genre" onChange={e => setGenre(e.target.value)}>
+                    <select
+                        name="genre"
+                        id="genre"
+                        onChange={(e) => setGenre(e.target.value)}
+                    >
                         <option>Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>
