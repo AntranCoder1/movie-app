@@ -61,7 +61,7 @@ const NewList = () => {
                         <label>Type</label>
                         <select name="type" onChange={handleChange}>
                             <option>Type</option>
-                            <option value="movie">Movie</option>
+                            <option value="movies">Movie</option>
                             <option value="series">Series</option>
                         </select>
                     </div>
