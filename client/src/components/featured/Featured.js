@@ -3,7 +3,7 @@ import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import axios from 'axios';
 import  './Featured.scss';
 
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
 
     const [content, setContent] = useState({});
 
@@ -12,7 +12,7 @@ const Featured = ({ type }) => {
             try {
                 const res = await axios.get(`/movie/random?type=${type}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOThiODdkMTM0MDQzMjU4ODMzYTAzYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzU3NTc2MCwiZXhwIjoxNjM4MDA3NzYwfQ.PhvDxbbsi7VJLWCyLBlOhAHNmssqcCiLOdH0auycVZ8"
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOThiODdkMTM0MDQzMjU4ODMzYTAzYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzgyODAxMiwiZXhwIjoxNjM4MjYwMDEyfQ.rLPMpeWrz7yYzSUkDkgbzAeXy0_176tiBqe6OvAbwu4"
                     }
                 })
                 setContent(res.data[0]);
@@ -30,7 +30,7 @@ const Featured = ({ type }) => {
             {type && (
                 <div className="category">
                     <span>{type === "movies" ? "Movies" : "Series"}</span>
-                    <select name="genre" id="genre">
+                    <select name="genre" id="genre" onChange={e => setGenre(e.target.value)}>
                         <option>Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>
@@ -45,7 +45,6 @@ const Featured = ({ type }) => {
                         <option value="animation">Animation</option>
                         <option value="drama">Drama</option>
                         <option value="documentary">Documentary</option>
-                        <option value="catoon">Catoon</option>
                     </select>
                 </div>
             )}

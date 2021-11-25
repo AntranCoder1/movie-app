@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Home from './pages/home/Home';
 import Watch from './pages/watch/Watch';
 import './App.scss';
@@ -9,10 +9,11 @@ import { BrowserRouter as Router,
   Route,
   Redirect
 } from 'react-router-dom';
+import { AuthContext } from './Context/AuthContext';
 
 function App() {
 
-  const user = true;
+  const { user } = useContext(AuthContext);
 
   return (
     <Router>

@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { login } from '../../Context/ApiCall';
+import { AuthContext } from '../../Context/AuthContext';
 import './Login.scss';
 
 const Login = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const { dispatch } = useContext(AuthContext);
+    
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        login({ email, password }, dispatch);
+    }
+
     return (
         <div className="login">
             <div className="top">
@@ -19,12 +32,14 @@ const Login = () => {
                     <input 
                         type="email"
                         placeholder="Email or phone number"
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <input 
                         type="password"
                         placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button className="loginButton">Sign In</button>
+                    <button className="loginButton" onClick={handleLogin}>Sign In</button>
                     <span>
                         New to Netfix? <b>Sign up now.</b>
                     </span>
