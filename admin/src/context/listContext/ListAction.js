@@ -12,7 +12,7 @@ export const getListsFailure = () => ({
 });
 
 export const createListsStart = () => ({
-    type: 'GET_LISTS_START',
+    type: 'CREATE_LISTS_START',
 });
 
 export const createListsSuccess = (list) => ({

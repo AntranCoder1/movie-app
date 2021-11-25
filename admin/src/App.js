@@ -18,6 +18,8 @@ import NewProduct from './pages/newProduct/NewProduct';
 import Login from './pages/login/Login';
 import { AuthContext } from './context/authContext/AuthContext';
 import ListList from './pages/listList/ListList';
+import List from './pages/list/List';
+import NewList from './pages/newList/NewList';
 
 function App() {
 
@@ -42,8 +44,8 @@ function App() {
                 <Route exact path="/products/:productId" component={ProductEdit} />
                 <Route exact path="/newproduct" component={NewProduct} />
                 <Route exact path="/lists" component={ListList} />
-                {/* <Route exact path="/list/:listId" component={} />
-                <Route exact path="/newList" component={} /> */}
+                <Route exact path="/list/:listId" component={List} />
+                <Route exact path="/newList" component={NewList} />
             </div>
           </>
         ) : <Login /> }
