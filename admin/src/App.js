@@ -17,6 +17,7 @@ import ProductEdit from './pages/productEdit/ProductEdit';
 import NewProduct from './pages/newProduct/NewProduct';
 import Login from './pages/login/Login';
 import { AuthContext } from './context/authContext/AuthContext';
+import ListList from './pages/listList/ListList';
 
 function App() {
 
@@ -40,6 +41,9 @@ function App() {
                 <Route exact path="/movies" component={Product} />
                 <Route exact path="/products/:productId" component={ProductEdit} />
                 <Route exact path="/newproduct" component={NewProduct} />
+                <Route exact path="/lists" component={ListList} />
+                {/* <Route exact path="/list/:listId" component={} />
+                <Route exact path="/newList" component={} /> */}
             </div>
           </>
         ) : <Login /> }
