@@ -10,18 +10,18 @@ const Featured = ({ type, setGenre }) => {
     useEffect(() => {
         const getRandomContent = async () => {
             try {
-                const res = await axios.get(`/movie/random?type=${type}`, {
+                const res = await axios.get(`/movies/random?type=${type}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOThiODdkMTM0MDQzMjU4ODMzYTAzYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzgyODAxMiwiZXhwIjoxNjM4MjYwMDEyfQ.rLPMpeWrz7yYzSUkDkgbzAeXy0_176tiBqe6OvAbwu4"
-                    }
-                })
+                        token: "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+                    },
+                });
                 setContent(res.data[0]);
-            } catch (error) {
-                console.log(error);
+            } catch (err) {
+                console.log(err);
             }
-        }
+        };
         getRandomContent();
-    }, [type])
+    }, [type]);
 
     console.log(content);
 

@@ -28,14 +28,14 @@ export const getMovies = async (dispatch) => {
 export const createMovies = async (movie, dispatch) => {
     dispatch(createMoviesStart());
     try {
-      const res = await axios.post("/movies", movie, {
-        headers: {
-          token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-        },
-      });
-      dispatch(createMoviesSuccess(res.data));
+        const res = await axios.post("/movies", movie, {
+            headers: {
+                token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+            },
+        });
+        dispatch(createMoviesSuccess(res.data));
     } catch (err) {
-      dispatch(createMoviesFailure());
+        dispatch(createMoviesFailure());
     }
 };
 

@@ -17,12 +17,11 @@ const ListItem = ({ index, item }) => {
     useEffect(() => {
         const getMovie = async () => {
             try {
-                const res = await axios.get('/movie/find/' + item, {
+                const res = await axios.get('/movies/find/' + item, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOThiODdkMTM0MDQzMjU4ODMzYTAzYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzU3MTE3NCwiZXhwIjoxNjM4MDAzMTc0fQ.wnq-hedz-DICXwwQN4Utze63kvdC2aVvc99y6RWx8Z8"
-                    }
-                })
-
+                        token: "Bearer" + JSON.parse(localStorage.getItem("user")).accessToken,
+                    },
+                });
                 setMovies(res.data);
             } catch (error) {
                 console.log(error);

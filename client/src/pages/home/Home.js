@@ -11,23 +11,25 @@ const Home = ({ type }) => {
     const [genre, setGenre] = useState(null);
 
     useEffect(() => {
-        const getRandomList = async () => {
+        const getRandomLists = async () => {
             try {
                 const res = await axios.get(
                     `/lists${type ? "?type=" + type : ""}${
                         genre ? "&genre=" + genre : ""
-                        }`, {
+                    }`,
+                    {
                         headers: {
-                            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOThiODdkMTM0MDQzMjU4ODMzYTAzYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzU3MTE3NCwiZXhwIjoxNjM4MDAzMTc0fQ.wnq-hedz-DICXwwQN4Utze63kvdC2aVvc99y6RWx8Z8"
-                        }
+                            token:
+                                "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+                            },
                     }
                 );
                 setLists(res.data);
-            } catch (error) {
-                console.log(error);
+            } catch (err) {
+                console.log(err);
             }
-        }
-        getRandomList();
+        };
+        getRandomLists();
     }, [type, genre]);
 
     return (
